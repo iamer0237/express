@@ -7,16 +7,16 @@ import { useState,useEffect } from 'react';
 
 export default function App() {
   const [entries, setEntries] = useState([]);
-  const [article,setArticle] =useState([])
+  const [articles,setArticles] =useState([])
   useEffect(() => {
     axios
       .get(
         `./data.json`
       )
       .then((response) => {
-        setEntries(response.data.items);
-        setArticle(response.data.items )
-      })
+        setArticles(response.data.items )
+        console.log(response.data.items)
+       })
       .catch((err) => {
         console.log(err);
       });
@@ -35,7 +35,7 @@ export default function App() {
           </header>
           <main>
             <div className='wrapper'>
-              <Posts posts={entries} articls={article}/>
+              <Posts posts={articles}/>
             </div>
             
           </main>
